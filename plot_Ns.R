@@ -20,15 +20,15 @@ length(which(myTab$seqNs >= 421))
 library(ggplot2)
 # load information about Omicron sequences (from 3. to 452. line)
 Nplot <- ggplot(data=myTab, aes(y=as.integer(seqNs), x=as.factor(technology), col=technology)) + geom_point() + ylab("number of unknown bases") + xlab("sequencing technology") + ggtitle("450 omicron sars2 sequences") + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-Nplot + geom_hline(yintercept=420, linetype="dashed", color = "red", size=2)
+Nplot + geom_hline(yintercept=421, linetype="dashed", color = "red", size=2)
 # Ns_per_technology.png
 
 ## check if the number of Ns differs among countries
 NsCplot <- ggplot(data=myTab[c(3:452),], aes(y=as.integer(seqNs), x=as.factor(country), col=country)) + geom_point() + ylab("number of unknown bases") + xlab("country") + ggtitle("450 omicron sars2 sequences") + theme_bw() + theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
-NsCplot + geom_hline(yintercept=420, linetype="dashed", color = "red", size=2) + theme(legend.title = element_blank()) +  theme(legend.position = "none")
+NsCplot + geom_hline(yintercept=421, linetype="dashed", color = "red", size=2) + theme(legend.title = element_blank()) +  theme(legend.position = "none")
 # UnknownBases_omicron_perCountry.png
 
-ExcludeEPIs <- myTab$EPI[which(myTab$seqNs >= 420)]
+ExcludeEPIs <- myTab$EPI[which(myTab$seqNs >= 421)]
 # create a list of samples that need to be excluded
 write(ExcludeEPIs, "samples_to_exclude.list", sep="\t")
 
